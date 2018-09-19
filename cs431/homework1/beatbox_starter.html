@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:500,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title> Beatbox</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <h1> Homework#1: Beatbox </h1>
+  </nav>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="d-flex justify-content-center">
+          <div class="pad" id="kick" align="center">
+            <button class="drum" id="kickPad" onmousedown="playdrum(0)"> Kick ('a' key)</button>
+            <input class="volume" onchange="changegain(0,this.value)" id="kickVol" title="Kick volume" type="range" min="-24" max="0" value="-12">
+            <p id="kickVolLabel"></p>
+          </div>
+          <div class="pad" id="snare" align="center">
+            <button class="drum" id="snarePad" onmousedown="playdrum(1)"> Snare ('s' key)</button>
+            <input class="volume" onchange="changegain(1,this.value)" id="snareVol" title="Snare volume" type="range" min="-24" max="0" value="-12">
+            <p id="snareVolLabel"></p>
+          </div>
+          <div class="pad" id="hihat" align="center">
+            <button class="drum" id="hihatPad" onmousedown="playdrum(2)"> Hihat ('l' key)</button>
+            <input class="volume" onchange="changegain(2,this.value)" id="hihatVol" title="Hihat volume" type="range" min="-24" max="0" value="-12">
+            <p id="hihatVolLabel"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="d-flex justify-content-center">
+          <div class="pad" id="revKick" align="center">
+            <button class="drum" id="revKickPad" onmousedown="playdrum(3)"> Reverse Kick ('d' key)</button>
+            <input class="volume" onchange="changegain(3,this.value)" id="revKickVol" title="Reverse Kick volume" type="range" min="-24" max="0" value="-12">
+            <p id="revKickVolLabel"></p>
+          </div>
+          <div class="pad" id="revSnare" align="center">
+            <button class="drum" id="revSnarePad" onmousedown="playdrum(4)"> Reverse Snare ('f' key)</button>
+            <input class="volume" onchange="changegain(4,this.value)" id="revSnareVol" title="Reverse Snare volume" type="range" min="-24" max="0" value="-12">
+            <p id="revSnareVolLabel"></p>
+          </div>
+          <div class="pad" id="revHihat" align="center">
+            <button class="drum" id="revHihatPad" onmousedown="playdrum(5)"> Reverse Hihat ('k' key)</button>
+            <input class="volume" onchange="changegain(5,this.value)" id="revHihatVol" title="Reverse Hihat volume" type="range" min="-24" max="0" value="-12">
+            <p id="revHihatVolLabel"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="d-flex justify-content-center">
+          <div class="pad" id="lok" align="center">
+            <button class="drum" id="lokPad" onmousedown="playdrum(6)"> Lok ('j' key)</button>
+            <input class="volume" onchange="changegain(6,this.value)" id="lokVol" title="Lok volume" type="range" min="-24" max="0" value="-12">
+            <p id="lokVolLabel"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
