@@ -15,44 +15,55 @@ var volume_label_id = new Array("kickVolLabel", "snareVolLabel", "hihatVolLabel"
   "lokVolLabel");
 var gain_nodes = new Array(7);
 
-var record = document.querySelector('#record');
-var stop = document.querySelector('#stop');
-var play = document.querySelector('#play');
+var record = document.querySelector('.record');
+var stop = document.querySelector('.stop');
+var play = document.querySelector('.play');
 
-// var mediaRecorder = new MediaRecorder(context.destination.stream);
+var destination = context.createMediaStreamDestination();
+var mediaRecorder = new MediaRecorder(destination.stream);
 
-// record.onclick = function() {
-//     mediaRecorder.start();
-//     console.log(mediaRecorder.state);
-//     console.log("recorder started");
-//     record.style.background = "red";
-//     record.style.color = "black";
-// }
+record.onclick = function() {
+    mediaRecorder.start();
+    console.log(mediaRecorder.state);
+    console.log("recorder started");
+    record.style.background = "red";
+    record.style.color = "black";
+}
 
-// var recording = null;
-// mediaRecorder.ondataavailable = function(e) {
-//     recording = e.data;
-// }
+stop.onclick = function() {
+    mediaRecorder.stop();
+    console.log(mediaRecorder.state);
+    console.log("recorder stopped");
+    record.style.background = "";
+    record.style.color = "";
+}
 
-// stop.onclick = function() {
-//     mediaRecorder.stop();
-//     console.log(mediaRecorder.state);
-//     console.log("recorder stopped");
-//     record.style.background = "";
-//     record.style.color = "";
-// }
+var chunks = [];
 
-// generators[0] = context.createOscillator();
-// filters[0] = context.createBiquadFilter();
+mediaRecorder.ondataavailable = function(e) {
+      chunks.push(e.data);
+}
 
-// // connect
-// generators[0].connect(filters[0]);
+var soundClips = document.querySelector('.sound-clips');
+mediaRecorder.onstop = function(e) {
+  console.log("recorder stopped");
 
-// // control
-// generators[0].type = 'sine';
-// generators[0].frequency.value = 440;
-// filters[0].frequency.value = 1000;
-// filters[0].Q.value = 10;
+  var audio = document.createElement('audio');
+           
+  audio.setAttribute('controls', '');
+  var clipContainer = document.getElementById('clip');
+  clipContainer.appendChild(audio);
+
+  var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+  chunks = [];
+  var audioURL = window.URL.createObjectURL(blob);
+  audio.src = audioURL;
+
+  deleteButton.onclick = function(e) {
+    var evtTgt = e.target;
+    evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+  }
+}
 
 for (i = 0; i < volume_id.length; i++) {
   gain_nodes[i] = context.createGain();
@@ -60,29 +71,9 @@ for (i = 0; i < volume_id.length; i++) {
   var vol = document.getElementById(volume_id[i]).value;
   gain_nodes[i].gain.value = db2gain(vol);
   gain_nodes[i].connect(context.destination);
+  gain_nodes[i].connect(destination);
   console.log(volume_label_id[i])
   document.getElementById(volume_label_id[i]).innerHTML = 'V ' + vol + 'dB';
-}
-
-// filters[0].connect(gain_nodes[3]);
-// generators[0].start();
-
-soundpads = ["sinePad", "samplePad"]
-
-function togglesound(index) {
-  var pad = document.getElementById(soundpads[index]);
-  buffers[index].connect(gain_nodes[index]);
-  if (pad.className == "active") {
-    pad.className = "";
-    stopsound(index);
-  } else {
-    sinepad.className = "active";
-    simulateFocus(pad);
-  }
-}
-
-function stopsound(index) {
-  generators[index].disconnect();
 }
 
 var sound_files = ["b_kickdrum.wav", "p_snare.wav", "ts_hitat.wav",
@@ -104,16 +95,6 @@ for (let i = 0; i < sound_files.length; i++) {
   }
   sounds[i].send();
 }
-
-var kick = new XMLHttpRequest();
-kick.open("Get", sound_files[0], true);
-kick.responseType = "arraybuffer";
-kick.onload = function() {
-  context.decodeAudioData(kick.response, function(buffer) {
-    buffers[0] = buffer;
-  });
-}
-kick.send();
 
 window.onload = function() {
   window.addEventListener('keydown', function(key) {
@@ -140,23 +121,6 @@ function changegain(i, changedvalue) {
 function db2gain(db_gain) {
   var gain = Math.pow(10, +db_gain / 20);
   return gain;
-}
-
-// SYNTH
-
-function changeOscFreq(i, oscFreq) {
-  generators[i].frequency.value = oscFreq;
-
-  var freqSlider_value = document.getElementById("oscFrequencySliderValue");
-  freqSlider_value.innerHTML = oscFreq + ' Hz';
-}
-
-function changeFilterFreq(i, filterFreq) {
-  console.log(i, filterFreq)
-  filters[i].frequency.value = filterFreq;
-
-  var freqSlider_value = document.getElementById("filterFrequencySliderValue");
-  freqSlider_value.innerHTML = filterFreq + ' Hz';
 }
 
 // keyboard mapping

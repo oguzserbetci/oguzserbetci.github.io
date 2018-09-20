@@ -28,12 +28,9 @@ button.drum.active, button.drum:active {
 }
 
 
-button.oscilator {
-  border-color: #ffcccc;
-}
-
-button.filter {
-  border-color: #ffaf40;
+button.recorder {
+  width: 120px;
+  height: 40px;
 }
 
 input.volume {

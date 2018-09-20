@@ -18,6 +18,18 @@
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="d-flex justify-content-center">
+          <button class="record recorder">Record</button>  
+          <section id="clip">
+
+          </section>
+          <button class="stop recorder">Stop</button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="d-flex justify-content-center">
           <div class="pad" id="kick" align="center">
             <button class="drum" id="kickPad" onmousedown="playdrum(0)"> Kick ('a' key)</button>
             <input class="volume" onchange="changegain(0,this.value)" id="kickVol" title="Kick volume" type="range" min="-24" max="0" value="-12">
