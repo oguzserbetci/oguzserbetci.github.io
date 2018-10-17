@@ -1,7 +1,10 @@
+var WAVEFORM_MOVEMENT = 50;
+var SPACE = 0;
+
 var song;
 var second;
-var el_width;
-var offset = 0;
+var offset = WAVEFORM_MOVEMENT/2;
+var bgHue;
 
 var fft;
 var amplitude;
@@ -18,6 +21,7 @@ var easing = 0.01;
 var easedMouseX;
 var easedMouseY;
 
+
 Array.prototype.max = function() {
     return Math.max.apply(null, this);
 };
@@ -28,7 +32,9 @@ Array.prototype.min = function() {
 
 Array.prototype.mean = function() {
     if (this.length) {
-        sum = this.reduce(function(a, b) { return a + b; });
+        sum = this.reduce(function(a, b) {
+            return a + b;
+        });
         avg = sum / this.length;
         return avg;
     } else {
@@ -36,41 +42,49 @@ Array.prototype.mean = function() {
     }
 }
 
-function preload(){
-    //song = loadSound('01 Thousand Knives.m4a');
+function preload() {
+    // song = loadSound('./03 - Flatiron.mp3');
     song = loadSound('Soft_and_Furious_-_09_-_Horizon_Ending.mp3');
 }
 
-function setup(){
+function setup() {
     var canvas = createCanvas(windowWidth, windowHeight);
+    colorMode(HSB, 1);
+    SPACE = max(width,height);
+
     canvas.mouseClicked(togglePlay);
     fft = new p5.FFT();
     easedMouseX = mouseX;
     easedMouseY = mouseY;
     amplitude = new p5.Amplitude();
-    bgColor = color(10,10,10);
+    randomBg();
     checkSpotify(true);
-    el_width = 0;
 }
 
-function popSpotifyVariable(varName){
+function popSpotifyVariable(varName) {
     popped = horizon_analysis[varName][0];
     horizon_analysis[varName].shift();
     return popped;
 }
 
-function randomBg(){
-    colorMode(HSB, 1);
-    bgColor = color(random(1), 1, 0.2);
-    colorMode(RGB,255);
-    background(bgColor);
+function randomBg() {
+    bgHue = random(1);
+    background(color(bgHue, 1, 0.2));
 }
 
-//watched variables
+// watch spotify variables
 var spotifyVariables = ["bars", "beats", "sections", "segments", "tatums"];
-var spotifyCallbacks = {"tatums": function(popped) {el_width = Math.pow(popped.duration,-2);},
-                        "segments": function(popped) {randomBg();
-                                                      offset = 0;}};
+var spotifyCallbacks = {
+    "beats": function(popped) {
+    },
+    "tatums": function(popped) {
+    },
+    "segments": function(popped) {
+        if (popped.confidence > 0.6) {
+            randomBg();
+        }
+    }
+};
 var poppedSpotifyVariables = {};
 
 function checkSpotify(start) {
@@ -85,103 +99,94 @@ function checkSpotify(start) {
         }
     }
 }
+var easedLevel = 0;
 
-function draw(){
+// draw
+function draw() {
     if (song.isPlaying()) {
-    second = song.currentTime();
+        console.log("Hello");
+        second = song.currentTime();
 
-    level = amplitude.getLevel();
-    left_level = amplitude.getLevel(0);
-    right_level = amplitude.getLevel(1);
+        level = amplitude.getLevel();
+        targetLevel = level;
+        dx = targetLevel - easedLevel;
+        easedLevel += dx * 0.05;
 
-    // mouse easing
-    targetX = mouseX;
-    dx = targetX - easedMouseX;
-    easedMouseX += dx * easing;
+        left_level = amplitude.getLevel(0);
+        right_level = amplitude.getLevel(1);
 
-    targetY = mouseY;
-    dy = targetY - easedMouseY;
-    easedMouseY += dy * easing;
+        // mouse easing
+        // targetX = mouseX;
+        // dx = targetX - easedMouseX;
+        // easedMouseX += dx * easing;
 
-    if (level > 0.3) {
-       // randomBg(c)
-    }
-    bgColor.setAlpha(0.1)
-    background(bgColor);
+        // targetY = mouseY;
+        // dy = targetY - easedMouseY;
+        // easedMouseY += dy * easing;
 
-    checkSpotify(false)
+        background(color(bgHue,1,0.2,0.2));
+        checkSpotify(false);
 
-    noFill();
-    fill(0, 255, 0, 0.1)
-    dx = left_level - eased_left_level
-    eased_left_level += dx
+        // dx = left_level - eased_left_level;
+        // eased_left_level += dx;
 
-    dx = right_level - eased_right_level
-    eased_right_level += dx
+        // dx = right_level - eased_right_level;
+        // eased_right_level += dx;
 
-    ellipse(0, height-easedMouseY, map(eased_left_level, 0, 1, 100, width))
-    ellipse(width, height-easedMouseY, map(eased_right_level, 0, 1, 100, width))
+        var spectrum = fft.analyze();
+        if (fft.getEnergy("treble")>150) {
+            offset = WAVEFORM_MOVEMENT/2;
+        }
 
-    el_width += 100
-    ellipse(width/2, height-easedMouseY, el_width)
+        var bands = fft.logAverages(fft.getOctaveBands(2));
+        console.log(bands.length);
+        var trebleEnergy = fft.getEnergy("treble");
+        for (var i = 0; i < bands.length; i++) {
+            if (bands[i] > 100) {
+                noFill();
+                stroke(color(bgHue, 1, map(trebleEnergy, 0, 255, 0.2, 1)));
+                strokeWeight(map(bands[i], 100, 255, 1, 10));
+                iRatio = map(i, 0, bands.length-1, 0, 1);
+                easedWidth = map(i, 0, bands.length-1, 50, SPACE);
+                ellipse(width / 2, height/2, Math.pow(easedWidth*easedLevel*1.5, 1.3));
+            }
+        }
 
-    var spectrum = fft.analyze();
+        rectMode(CENTER);
+        noFill();
+        strokeWeight(1);
+        rect(width / 2, height / 2, offset, height);
+        rect(width / 2, height / 2, width, offset);
+        offset += WAVEFORM_MOVEMENT;
 
-    //noStroke();
-    //fill(0,255,0); // spectrum is green
-    //for (var i = 0; i< spectrum.length; i++){
-        //var x = map(i, 0, spectrum.length, 0, width);
-        //var h = -height + map(spectrum[i], 0, 255, height, 0);
-        //rect(x, height, width / spectrum.length, h );
-    //}
-
-
-    var waveform = fft.waveform();
-    fft.smooth(0.1);
-    noFill();
-    beginShape();
-    stroke(255,0,0); // waveform is red
-    strokeWeight(1);
-    for (var i = 0; i< waveform.length; i++){
-        var x = map(i, 0, waveform.length, 0, width);
-        var y = map( waveform[i], -1, 1, easedMouseY-(height/2), easedMouseY+(height/2));
-        vertex(x,y+offset);
-    }
-    offset += 100;
-    endShape();
-
-    stroke(255,255,255); // waveform is red
-    text('click to play/pause', 4, 10);
-
-    stroke(255);
-    // quadAtPoint(easedMouseX, easedMouseY, Math.pow(spectrum.mean(),1.7), spectrum.max());
-    // quadAtPoint(easedMouseX, easedMouseY, Math.pow(spectrum.mean(),1.5), spectrum.max());
-    // quadAtPoint(easedMouseX, easedMouseY, Math.pow(spectrum.mean(),1.3), spectrum.max());
-    // quadAtPoint(easedMouseX, easedMouseY, spectrum.mean(), spectrum.max());
+        var waveform = fft.waveform();
+        fft.smooth(0.1);
+        noFill();
+        beginShape();
+        strokeWeight(1);
+        for (var i = 0; i < waveform.length; i++) {
+            var x = map(i, 0, waveform.length, 0, width);
+            var y = map(waveform[i], -1, 1, 0, height/2);
+            if (trebleEnergy > 130) {
+                stroke(0.07, 1, 1); // yellow
+            } else {
+                stroke(0.95, 1, 1); // red
+            }
+            vertex(x, y + offset);
+        }
+        endShape();
     }
 }
 
-function togglePlay(){
+function togglePlay() {
     if (song.isPlaying()) {
-        song.pause()
+        song.pause();
     } else {
-        song.play()
+        song.play();
     }
 }
-
-function quadAtPoint(x, y, width, height){
-    x1 = x-(width/2);
-    x2 = x+(width/2);
-    y1 = y-(height/2);
-    y2 = y+(height/2);
-    quad(x1, y, x, y1, x2, y, x, y2);
-}
-
-function patternAtPoint(x,y) {}
 
 // disable scrolling in mobile
-function touchMoved() {
-    return false;
-}
-
-
+// function touchMoved() {
+//     return false;
+// }
