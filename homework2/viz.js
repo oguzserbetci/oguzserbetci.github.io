@@ -126,7 +126,7 @@ function draw() {
 
         rectMode(CENTER);
         noFill();
-        stroke(color(bgHue, 1, map(trebleEnergy, 0, 255, 0.5, 1)));
+        stroke(color(bgHue, 1, 1));
         strokeWeight(1);
         rect(width / 2, height / 2, offset, height);
         rect(width / 2, height / 2, width, offset);
@@ -139,7 +139,7 @@ function draw() {
         strokeWeight(1);
         for (var i = 0; i < waveform.length; i++) {
             var x = map(i, 0, waveform.length, 0, width);
-            var point = smoothPoint(waveform, i,10);
+            var point = smoothPoint(waveform, i, 50);
             var y = map(point, -1, 1, 0, height / 2);
             if (trebleEnergy > 130) {
                 stroke(triad(bgHue)[1], 1, 1);
@@ -166,9 +166,7 @@ function smoothPoint(spectrum, index, numberOfNeighbors) {
 
     for (var i = indexMinusNeighbors; i < (index+neighbors) && i < len; i++) {
         // if there is a point at spectrum[i], tally it
-        if (i == index) {
-            val += spectrum[i];
-        } else if (typeof(spectrum[i]) !== 'undefined') {
+        if (typeof(spectrum[i]) !== 'undefined') {
             val += spectrum[i];
             smoothedPoints++;
         }
