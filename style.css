@@ -16,13 +16,16 @@ body {
   white-space: pre-wrap;
   word-break: break-all;
 }
+
 .regular { font-weight: 400; }
 .medium { font-weight: 500; }
 .bold { font-weight: 700; }
 
 .link-container {
   margin-top: 2vh;
+  margin-bottom: 2vh;
 }
+
 .icon-link {
   height: 30px;
   width: 30px;
@@ -30,5 +33,9 @@ body {
 }
 
 .note {
-  color: #DDD5ED !important;
+  color: #BBB5C9 !important;
+}
+
+#gems {
+  color: #ff4757 !important;
 }
