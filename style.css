@@ -1,0 +1,34 @@
+body {
+  margin: 30px;
+  color: #070017;
+  font-family: 'Fira Mono', monospace;
+}
+
+.columns {
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+  -moz-column-count: 2; /* Firefox */
+  column-count: 2;
+}
+
+.code {
+  width: 30em;
+  margin: 5em auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.regular { font-weight: 400; }
+.medium { font-weight: 500; }
+.bold { font-weight: 700; }
+
+.link-container {
+  margin-top: 2vh;
+}
+.icon-link {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+}
+
+.note {
+  color: #DDD5ED !important;
+}
