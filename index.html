@@ -1,31 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Oguz Serbetci</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&amp;subset=latin-ext" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-6">👋 hello,
-      </div>
-      <div class="col-6">I'm Oğuz <span class="note">Oɣuz</span>
-        <div class="link-container">
-          <a href="https://github.com/oguzserbetci" target="_blank"><img id="github-link" class="icon-link" src="./img/github-b-plus.png" alt="github"></a>
-          <a href="https://twitter.com/oguzserbetci" target="_blank"><img id="twitter-link" class="icon-link" src="./img/twitter-sq.svg" alt="twitter"></a>
-          <a href="https://www.linkedin.com/in/oğuz-şerbetci-27405ab0" target="_blank"><img id="linkedin-link" class="icon-link" src="./img/linkedin.png" alt="linkedin"></a>
-          <a href="https://unsplash.com/@oguzserbetci" target="_blank"><img id="unsplash-link" class="icon-link" src="./img/unsplash.png" alt="unsplash"></a>
-        </div>
-        <h5>PROJECTS</h5>
-        <p><span class="note">2018</span> <a href="https://github.com/oguzserbetci/argmin2017" target="_blank">Argument structure mining using Pointer Networks.</a></p>
-        <p><span class="note">2018</span> <a href="https://www.slideshare.net/NecipOguzSerbetci/hierarchical-reinforcement-learning-with-optioncritic-architecture" target="_blank">Presentation</a> on Hierarchical Reinforcement Learning with Options Framework at <a href="http://berlin-machine-learning-seminar.org" target="_blank">Berlin Machine Learning Seminar</a>.</p>
-        <p><span class="note">2017</span> <a href="https://oguzserbetci.github.io/generate-time-series" target="_blank">Generate synthetic time-series data using DTW and Stochastic Subgradient averaging</a></p>
-        <p><span class="note">2017</span> <a href="http://www.winlp.org/wp-content/uploads/2017/final_papers_2017/46_Paper.pdf" target="_blank">Grammatical gender associations outweigh topical gender bias in crosslinguistic word embeddings</a></p>
-        <p><span class="note">2017</span> Porfolio website for <a href="http://annalenakrause.de" target="_blank">ANNA-LENA KRAUSE</a></p>
+---
+layout: default
+title: Home
+---
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">👋 hello,</div>
+    <div class="col-md-6 col-sm-12">
+      <div class="d-flex justify-content-between">
+        <span>I'm Oğuz <span class="note">Oɣuz</span></span>
+        {% if site.author %}
+          <div class="link-container" style="display:inline; max-height:1em;">
+          {% for c in site.author.contact %}
+              <a href="{{c[1]}}" target="_blank"><img id="{{c[0]}}-link" class="icon-link" src="{{site.baseurl}}/public/img/{{c[0]}}.png" alt="{{c[0]}}"></a>
+          {% endfor %}
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
-</body>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <h1>blog <a href="feed.xml"><i class="fas fa-rss"></i></a></h1>
+      <ul id="post-list">
+        {% for post in site.posts %}
+          <li><span class="note">{{ post.category }}</span> <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      {% if site.stuff.size %}
+        <h1>stuff</h1>
+        <ul id="stuff-list">
+        {% for page in site.stuff %}
+            <li><a href="{{page.url}}">{{page.title}}</a></li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      <h1>projects</h1>
+      <ul id="project-list">
+        {% for project in site.data.projects %}
+          <li><span class="note">{{project.date}}</span> {{project.description | remove: '<p>' | remove: '</p>'}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
