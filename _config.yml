@@ -1,0 +1,36 @@
+# Site Info
+title: Oğuz Serbetci
+tagline: ''
+description: ''
+baseurl: "https://oguzserbetci.xyz"
+url: https://oguzserbetci.xyz
+logo: '/public/logo.png'
+
+# Site configurations
+remote_theme: oguzserbetci/prolific-theme
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# About/contact
+author:
+  name: Oğuz Serbetci
+  description: A passionate <strong>developer and researcher</strong>
+  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
+  contact:
+    github:    https://github.com/oguzserbetci
+    twitter:   https://twitter.com/oguzserbetci
+    linkedin:  https://www.linkedin.com/in/oğuz-şerbetci-27405ab0
+    unsplash:  https://unsplash.com/@oguzserbetci
+
+collections:
+  stuff:
+    output: true
+    permalink: /:name
+    order:
+      - aboutme.md
+      - books.md
+
+
+# Puglins
+mathjax: true # whether support mathjax
