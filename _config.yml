@@ -28,9 +28,6 @@ collections:
     output: true
     permalink: /:name
     order:
-      - aboutme.md
-      - books.md
-
 
 # Puglins
 mathjax: true # whether support mathjax
