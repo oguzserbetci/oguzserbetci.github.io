@@ -1,0 +1,84 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/98d4aa1f/
+.bold	_site/public/css/main.css	/^.bold { font-weight: 700; }$/;"	c
+.bold	public/css/main.css	/^.bold { font-weight: 700; }$/;"	c
+.container	_site/public/css/main.css	/^.container {$/;"	c
+.container	public/css/main.css	/^.container {$/;"	c
+.icon-link	_site/public/css/main.css	/^.icon-link {$/;"	c
+.icon-link	public/css/main.css	/^.icon-link {$/;"	c
+.medium	_site/public/css/main.css	/^.medium { font-weight: 500; }$/;"	c
+.medium	public/css/main.css	/^.medium { font-weight: 500; }$/;"	c
+.note	_site/public/css/main.css	/^.note {$/;"	c
+.note	public/css/main.css	/^.note {$/;"	c
+.post	_site/public/css/main.css	/^.post {$/;"	c
+.post	public/css/main.css	/^.post {$/;"	c
+.post-header	_site/public/css/main.css	/^.post-header {$/;"	c
+.post-header	public/css/main.css	/^.post-header {$/;"	c
+.post-title	_site/public/css/main.css	/^.post-title {$/;"	c
+.post-title	public/css/main.css	/^.post-title {$/;"	c
+.prev.btn	_site/public/css/main.css	/^.prev.btn {$/;"	c
+.prev.btn	public/css/main.css	/^.prev.btn {$/;"	c
+.regular	_site/public/css/main.css	/^.regular { font-weight: 400; }$/;"	c
+.regular	public/css/main.css	/^.regular { font-weight: 400; }$/;"	c
+.taglist li:last-child:after	_site/public/css/main.css	/^.taglist li:last-child:after {$/;"	s
+.taglist li:last-child:after	public/css/main.css	/^.taglist li:last-child:after {$/;"	s
+Neque porro quisquam	_site/ipsum/2019/09/01/hello.html	/^            <h1 class="post-title">Neque porro quisquam<\/h1>$/;"	h
+Pellentesque habitant	_site/lorem/2019/09/01/hello2.html	/^            <h1 class="post-title">Pellentesque habitant<\/h1>$/;"	h
+Read more...	_layouts/post.html	/^      <h1>Read more...<\/h1>$/;"	h
+Read more...	_site/ipsum/2019/09/01/hello.html	/^      <h1>Read more...<\/h1>$/;"	h
+Read more...	_site/lorem/2019/09/01/hello2.html	/^      <h1>Read more...<\/h1>$/;"	h
+about me	_site/aboutme.html	/^            <h1 class="post-title">about me<\/h1>$/;"	h
+article > p	_site/public/css/main.css	/^article > p {$/;"	s
+article > p	public/css/main.css	/^article > p {$/;"	s
+back-link	_includes/header.html	/^<a href="\/" id="back-link">👋 <--<\/a>$/;"	I
+back-link	_site/aboutme.html	/^      <a href="\/" id="back-link">👋 <--<\/a>$/;"	I
+back-link	_site/books.html	/^      <a href="\/" id="back-link">👋 <--<\/a>$/;"	I
+back-link	_site/ipsum/2019/09/01/hello.html	/^      <a href="\/" id="back-link">👋 <--<\/a>$/;"	I
+back-link	_site/lorem/2019/09/01/hello2.html	/^      <a href="\/" id="back-link">👋 <--<\/a>$/;"	I
+blog	_site/index.html	/^      <h1>blog <a href="feed.xml"><i class="fas fa-rss"><\/i><\/a><\/h1>$/;"	h
+blog	index.html	/^      <h1>blog <a href="feed.xml"><i class="fas fa-rss"><\/i><\/a><\/h1>$/;"	h
+body	_site/public/css/main.css	/^body {$/;"	s
+body	public/css/main.css	/^body {$/;"	s
+books I like	_site/books.html	/^            <h1 class="post-title">books I like<\/h1>$/;"	h
+dsq-count-scr	_layouts/default.html	/^    <script id="dsq-count-scr" src="\/\/{{ site.disqus_short_name }}.disqus.com\/count.js" async/;"	I
+github-link	_site/index.html	/^              <a href="https:\/\/github.com\/oguzserbetci" target="_blank"><img id="github-link"/;"	I
+h1	_site/public/css/main.css	/^h1 {$/;"	s
+h1	public/css/main.css	/^h1 {$/;"	s
+linkedin-link	_site/index.html	/^              <a href="https:\/\/www.linkedin.com\/in\/oğuz-şerbetci-27405ab0" target="_blank"/;"	I
+post-info	_layouts/post.html	/^          <div id="post-info" class="note" style="display:inline">$/;"	I
+post-info	_site/ipsum/2019/09/01/hello.html	/^          <div id="post-info" class="note" style="display:inline">$/;"	I
+post-info	_site/lorem/2019/09/01/hello2.html	/^          <div id="post-info" class="note" style="display:inline">$/;"	I
+post-list	_site/index.html	/^      <ul id="post-list">$/;"	I
+post-list	index.html	/^      <ul id="post-list">$/;"	I
+project-list	_site/index.html	/^      <ul id="project-list">$/;"	I
+project-list	index.html	/^      <ul id="project-list">$/;"	I
+projects	_site/index.html	/^      <h1>projects<\/h1>$/;"	h
+projects	index.html	/^      <h1>projects<\/h1>$/;"	h
+stuff	_site/index.html	/^        <h1>stuff<\/h1>$/;"	h
+stuff	index.html	/^        <h1>stuff<\/h1>$/;"	h
+stuff-list	_site/index.html	/^        <ul id="stuff-list">$/;"	I
+stuff-list	index.html	/^        <ul id="stuff-list">$/;"	I
+tags: accumsan lobortis	_posts/2019-09-01-hello2.md	/^tags: accumsan lobortis$/;"	s
+tags: molestie interdum	_posts/2019-09-01-hello.md	/^tags: molestie interdum$/;"	s
+title: about me	_stuff/aboutme.md	/^title: about me$/;"	s
+title: books I like	_stuff/books.md	/^title: books I like$/;"	s
+twitter-link	_site/index.html	/^              <a href="https:\/\/twitter.com\/oguzserbetci" target="_blank"><img id="twitter-lin/;"	I
+ul	_site/public/css/main.css	/^ul {$/;"	s
+ul	public/css/main.css	/^ul {$/;"	s
+ul > li	_site/public/css/main.css	/^ul > li {$/;"	s
+ul > li	public/css/main.css	/^ul > li {$/;"	s
+ul.taglist	_site/public/css/main.css	/^ul.taglist {$/;"	c
+ul.taglist	public/css/main.css	/^ul.taglist {$/;"	c
+ul.taglist > li	_site/public/css/main.css	/^ul.taglist > li {$/;"	s
+ul.taglist > li	public/css/main.css	/^ul.taglist > li {$/;"	s
+ul.taglist > li:after	_site/public/css/main.css	/^ul.taglist > li:after {$/;"	s
+ul.taglist > li:after	public/css/main.css	/^ul.taglist > li:after {$/;"	s
+unsplash-link	_site/index.html	/^              <a href="https:\/\/unsplash.com\/@oguzserbetci" target="_blank"><img id="unsplash-/;"	I
+{{ page.title }}	_layouts/page.html	/^            <h1 class="post-title">{{ page.title }}<\/h1>$/;"	h
+{{ page.title }}	_layouts/post.html	/^            <h1 class="post-title">{{ page.title }}<\/h1>$/;"	h
+{{c[0]}}-link	index.html	/^              <a href="{{c[1]}}" target="_blank"><img id="{{c[0]}}-link" class="icon-link" src="/;"	I

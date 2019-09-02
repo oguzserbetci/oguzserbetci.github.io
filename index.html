@@ -11,7 +11,7 @@ title: Home
         {% if site.author %}
           <div class="link-container" style="display:inline; max-height:1em;">
           {% for c in site.author.contact %}
-              <a href="{{c[1]}}" target="_blank"><img id="{{c[0]}}-link" class="icon-link" src="{{site.baseurl}}/public/img/{{c[0]}}.png" alt="{{c[0]}}"></a>
+              <a href="{{c[1]}}" target="_blank"><img id="{{c[0]}}-link" class="icon-link" src="{{site.baseurl}}/assets/img/{{c[0]}}.png" alt="{{c[0]}}"></a>
           {% endfor %}
           </div>
         {% endif %}
@@ -20,29 +20,36 @@ title: Home
   </div>
   <div class="row">
     <div class="col-md-6 col-sm-12">
-      <h1>blog <a href="feed.xml"><i class="fas fa-rss"></i></a></h1>
-      <ul id="post-list">
-        {% for post in site.posts %}
-          <li><span class="note">{{ post.category }}</span> <a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
+      {% capture difference %}{{ site.posts | size | minus:1 }}{% endcapture %}
+      {% unless difference contains '-' %}
+        <h1>blog <a href="feed.xml"><i class="fas fa-rss"></i></a></h1>
+        <ul id="post-list">
+          {% for post in site.posts %}
+            <li><span class="note">{{ post.category }}</span> <a href="{{ post.url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endunless %}
     </div>
     <div class="col-md-6 col-sm-12">
-      {% if site.stuff.size %}
+      {% capture difference %}{{ site.stuff | size | minus:1 }}{% endcapture %}
+      {% unless difference contains '-' %}
         <h1>stuff</h1>
-        <ul id="stuff-list">
-        {% for page in site.stuff %}
-            <li><a href="{{page.url}}">{{page.title}}</a></li>
-        {% endfor %}
-        </ul>
-      {% endif %}
+          <ul id="stuff-list">
+          {% for page in site.stuff %}
+              <li><a href="{{page.url}}">{{page.title}}</a></li>
+          {% endfor %}
+          </ul>
+      {% endunless %}
 
-      <h1>projects</h1>
-      <ul id="project-list">
-        {% for project in site.data.projects %}
-          <li><span class="note">{{project.date}}</span> {{project.description | remove: '<p>' | remove: '</p>'}}</li>
-        {% endfor %}
-      </ul>
+      {% capture difference %}{{ site.data.projects | size | minus:1 }}{% endcapture %}
+      {% unless difference contains '-' %}
+        <h1>projects</h1>
+        <ul id="project-list">
+          {% for project in site.data.projects %}
+            <li><span class="note">{{project.date}}</span> {{project.description | remove: '<p>' | remove: '</p>'}}</li>
+          {% endfor %}
+        </ul>
+      {% endunless %}
     </div>
   </div>
 </div>
