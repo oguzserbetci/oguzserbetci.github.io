@@ -1,7 +1,7 @@
 ---
 ---
 
-@import "";
+@import "{{ site.theme }}";
 .plotly-graph-div {
     float: none;
     margin: 0 auto;
