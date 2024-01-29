@@ -19,9 +19,9 @@ author:
   gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
     github:    https://github.com/oguzserbetci
-    twitter:   https://twitter.com/oguzserbetci
+    # twitter:   https://twitter.com/oguzserbetci
     linkedin:  https://www.linkedin.com/in/oğuz-şerbetci-27405ab0
-    unsplash:  https://unsplash.com/@oguzserbetci
+    # unsplash:  https://unsplash.com/@oguzserbetci
 
 collections:
   stuff:
