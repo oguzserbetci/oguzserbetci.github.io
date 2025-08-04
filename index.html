@@ -41,6 +41,16 @@ title: Home
           </ul>
       {% endunless %}
 
+      {% capture difference %}{{ site.data.publications | size | minus:1 }}{% endcapture %}
+      {% unless difference contains '-' %}
+        <h1>publications</h1>
+        <ul id="project-list">
+          {% for publication in site.data.publications %}
+            <li><span class="note">{{publication.date}}</span> {{publication.description | remove: '<p>' | remove: '</p>'}}</li>
+          {% endfor %}
+        </ul>
+      {% endunless %}
+
       {% capture difference %}{{ site.data.projects | size | minus:1 }}{% endcapture %}
       {% unless difference contains '-' %}
         <h1>projects</h1>

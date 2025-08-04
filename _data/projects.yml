@@ -1,7 +1,3 @@
-- date: 2025
-  description: "Explaining Care Need Assessment Surveys: Qualitative and Quantitative Evaluation of State-of-the-Art Local and Global XAI Methods – <a href=\"https://academic.oup.com/jamiaopen/article/8/4/ooaf064/8217815\" target=\"_blank\">paper</a>"
-- date: 2020
-  description: "EffiCare: Better Prognostic Models via Resource-Efficient Health Embeddings – <a href=\"https://www.medrxiv.org/content/10.1101/2020.07.21.20157610v1\" target=\"_blank\">paper</a>"
 - date: 2020
   description: Presentation on Unsupervised Representation Learning with Contrastive Pre-training at <a href="http://berlin-machine-learning-seminar.org" target="_blank">Berlin Machine Learning Seminar</a> – <a href="https://docs.google.com/presentation/d/1wXFJlju5_EtlAx0j8COEvI1S76SvV59qCQiu8JdZUlo/edit#slide=id.g76ef0d84e5_1_69" target="_blank">slides</a>
 - date: 2019
@@ -14,5 +10,3 @@
   description: Presentation on Hierarchical Reinforcement Learning with Options Framework at <a href="http://berlin-machine-learning-seminar.org" target="_blank">Berlin Machine Learning Seminar</a> – <a href="https://www.slideshare.net/NecipOguzSerbetci/hierarchical-reinforcement-learning-with-optioncritic-architecture" target="_blank">slides</a>
 - date: 2017
   description: Generate synthetic time-series data using DTW and Stochastic Subgradient averaging – <a href="https://oguzserbetci.github.io/generate-time-series" target="_blank">report & code</a>
-- date: 2017
-  description: Grammatical gender associations outweigh topical gender bias in crosslinguistic word embeddings – <a href="http://www.winlp.org/wp-content/uploads/2017/final_papers_2017/46_Paper.pdf" target="_blank">paper</a>
